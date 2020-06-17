@@ -8,16 +8,32 @@ import (
 	log "github.com/sirupsen/logrus"
 )
 
-type Params map[string]interface{}
+type (
+	LogLevel uint32
+	Params   map[string]interface{}
+	message  struct {
+		message string
+		params  map[string]interface{}
+	}
+)
 
-type message struct {
-	message string
-	params  map[string]interface{}
-}
+const (
+	// WarnLevel level. Non-critical entries that deserve eyes.
+	WarnLevel = LogLevel(log.WarnLevel)
+	// InfoLevel level. General operational entries about what's going on inside the application.
+	InfoLevel = LogLevel(log.InfoLevel)
+	// DebugLevel level. Usually only enabled when debugging. Very verbose logging.
+	DebugLevel = LogLevel(log.DebugLevel)
+)
 
 func init() {
 	log.SetFormatter(&log.TextFormatter{})
 	log.SetOutput(os.Stdout)
+}
+
+// SetLogLevel sets the standard logger level.
+func SetLogLevel(level LogLevel) {
+	log.SetLevel(log.Level(level))
 }
 
 // String returns a string from an error object.
