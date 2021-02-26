@@ -1,3 +1,4 @@
+[![Go Reference](https://pkg.go.dev/badge/github.com/Pantani/logger.svg)](https://pkg.go.dev/github.com/Pantani/logger)
 [![codecov](https://codecov.io/gh/Pantani/logger/branch/master/graph/badge.svg?token=3CHQF7L76B)](https://codecov.io/gh/Pantani/logger)
 
 # Simple log package
